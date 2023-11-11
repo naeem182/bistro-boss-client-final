@@ -1,18 +1,32 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     const Navlinks = <>
-        <li><a>Item 1</a></li>
-        <li tabIndex={0}>
-            <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                    <li><a>Submenu 1</a></li>
-                    <li><a>Submenu 2</a></li>
-                </ul>
-            </details>
+
+
+
+        <li className=' font-semibold'>
+            <NavLink
+                to={'/'}
+                className={({ isActive, isPending }) =>
+                    isPending ? 'pending' : isActive ? 'underline' : ''
+                }
+            >
+                Home
+            </NavLink>
         </li>
-        <li><a>Item 3</a></li>
+
+        <li className=' font-semibold'>
+            <NavLink
+                to={'/ourmenu'}
+                className={({ isActive, isPending }) =>
+                    isPending ? 'pending' : isActive ? 'underline' : ''
+                }
+            >
+                Our Menu
+            </NavLink>
+        </li>
 
     </>
     return (
