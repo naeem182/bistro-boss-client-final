@@ -5,6 +5,7 @@ import PopulerMenu from '../PopulerMenu/PopulerMenu'
 import Featured from '../Featured/Featured'
 import Review from '../Reviews/Review'
 import { Helmet } from 'react-helmet'
+import Menu from '../OurMenu/Menu'
 
 
 
@@ -20,6 +21,7 @@ const Home = () => {
             <PopulerMenu></PopulerMenu>
             <Featured></Featured>
             <Review></Review>
+            <Menu></Menu>
 
         </div>
     )
