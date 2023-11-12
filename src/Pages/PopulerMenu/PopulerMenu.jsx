@@ -5,7 +5,7 @@ import Menuitem from "../Shared/MenuItem/Menuitem";
 const PopulerMenu = () => {
     const [menu, setmenu] = useState([]);
     useEffect(() => {
-        fetch('menu.json')
+        fetch('http://localhost:5000/menu')
             .then(res => res.json())
             .then(data => {
                 const populariteam = data.filter(item => item.category === 'popular');
