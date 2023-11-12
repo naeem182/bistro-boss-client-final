@@ -1,6 +1,7 @@
 import React from 'react';
 import Cover from '../Shared/Cover';
 import Menuitem from '../Shared/MenuItem/Menuitem';
+import { Link } from 'react-router-dom';
 
 const MenuCategory = ({ items, title, img }) => {
     console.log(items)
@@ -16,9 +17,9 @@ const MenuCategory = ({ items, title, img }) => {
                 }
             </div>
             <div className='flex justify-center items-center'>
-                {/* <Link to={`/order/${title}`}> */}
-                <button className="btn btn-outline text-center border-0 border-b-4 mt-4 mx-auto">Order Now</button>
-                {/* </Link> */}
+                <Link to={`/order/${title}`}>
+                    <button className="btn btn-outline text-center border-0 border-b-4 mt-4 mx-auto">Order Now</button>
+                </Link>
             </div>
         </div>
     );

@@ -29,7 +29,7 @@ const Navbar = () => {
         </li>
         <li className=' font-semibold'>
             <NavLink
-                to={'/order'}
+                to={'/order/category'}
                 className={({ isActive, isPending }) =>
                     isPending ? 'pending' : isActive ? 'underline' : ''
                 }
