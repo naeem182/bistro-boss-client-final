@@ -18,14 +18,18 @@ const mycreatedrouter = createBrowserRouter([
                 path: "/",
                 element: <Home></Home>,
             },
+
             {
                 path: "ourmenu",
                 element: <Menu></Menu>,
             },
+
             {
                 path: "order/:category",
                 element: <Order></Order>,
+
             },
+
         ],
     },
 ]);

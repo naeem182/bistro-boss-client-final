@@ -5,7 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import usemenu from '../../hooks/usemenu';
 import TabOrder from './TabOrder';
-import { useParams } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 
 const Order = () => {
 
@@ -36,19 +36,19 @@ const Order = () => {
                     <Tab>Drinks</Tab>
                 </TabList>
                 <TabPanel>
-                    <TabOrder items={salad}></TabOrder>
+                    <TabOrder items={salad} ></TabOrder>
                 </TabPanel>
                 <TabPanel>
-                    <TabOrder items={pizza}></TabOrder>
+                    <TabOrder items={pizza} ></TabOrder>
                 </TabPanel>
                 <TabPanel>
-                    <TabOrder items={soup}></TabOrder>
+                    <TabOrder items={soup} ></TabOrder>
                 </TabPanel>
                 <TabPanel>
-                    <TabOrder items={desserts}></TabOrder>
+                    <TabOrder items={desserts} ></TabOrder>
                 </TabPanel>
                 <TabPanel>
-                    <TabOrder items={drinks}></TabOrder>
+                    <TabOrder items={drinks} ></TabOrder>
                 </TabPanel>
             </Tabs>
         </div>
