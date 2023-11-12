@@ -27,6 +27,16 @@ const Navbar = () => {
                 Our Menu
             </NavLink>
         </li>
+        <li className=' font-semibold'>
+            <NavLink
+                to={'/order'}
+                className={({ isActive, isPending }) =>
+                    isPending ? 'pending' : isActive ? 'underline' : ''
+                }
+            >
+                Order
+            </NavLink>
+        </li>
 
     </>
     return (
