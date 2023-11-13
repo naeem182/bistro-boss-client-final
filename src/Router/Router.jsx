@@ -6,6 +6,7 @@ import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Menu from "../Pages/OurMenu/Menu";
 import Order from "../Pages/OurShopOrder/Order";
+import Login from "../Pages/LoginLogout/Login";
 
 
 const mycreatedrouter = createBrowserRouter([
@@ -32,5 +33,9 @@ const mycreatedrouter = createBrowserRouter([
 
         ],
     },
+    {
+        path: "/login",
+        element: <Login></Login>
+    }
 ]);
 export default mycreatedrouter

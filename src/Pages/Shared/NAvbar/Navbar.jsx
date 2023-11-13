@@ -62,7 +62,19 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <button>
+                    <li>
+                        <NavLink
+                            to={"/login"}
+                            className={({ isActive, isPending }) => {
+                                isPending ? 'pending' : isActive ? 'underline' : ''
+                            }}
+
+                        >
+                            Login
+                        </NavLink>
+                    </li>
+                </button>
             </div>
         </div>
     )
