@@ -29,6 +29,7 @@ const Login = () => {
     };
 
     const handleValidateCaptcha = (e) => {
+        setError('')
         const userCaptchaValue = e.target.value;
         if (validateCaptcha(userCaptchaValue)) {
             setError('');
