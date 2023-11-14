@@ -1,7 +1,17 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import useAuth from '../../../hooks/useAuth'
 
 const Navbar = () => {
+
+    const { user, logout } = useAuth()
+    const handlelogout = () => {
+        logout()
+            .then(res => { })
+            .catch(error => console.log(error))
+    }
+
+
     const Navlinks = <>
 
 
@@ -72,19 +82,31 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button>
-                    <li>
-                        <NavLink
-                            to={"/login"}
-                            className={({ isActive, isPending }) => {
-                                isPending ? 'pending' : isActive ? 'underline' : ''
-                            }}
 
-                        >
-                            Login
-                        </NavLink>
-                    </li>
-                </button>
+                {user ? <>
+                    <button onClick={handlelogout} className='btn btn-ghost hover:bg-red-500'
+                    >Logout</button>
+
+                </>
+                    :
+                    <>
+                        <button className='btn bg-gray-50 p-4 text-black hover:bg-green-400'>
+                            <NavLink
+                                to={"/login"}
+                                className={({ isActive, isPending }) => {
+                                    isPending ? 'pending' : isActive ? 'underline' : ''
+                                }}
+
+                            >
+                                Login
+                            </NavLink>
+                        </button>
+                    </>
+
+                }
+
+
+
             </div>
         </div>
     )

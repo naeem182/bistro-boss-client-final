@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
     loadCaptchaEnginge,
     LoadCanvasTemplate,
 
     validateCaptcha,
 } from 'react-simple-captcha';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
+    const { signin } = useAuth()
     const [error, setError] = useState('');
 
     useEffect(() => {
@@ -26,6 +29,13 @@ const Login = () => {
         } else {
             console.log('Login not allowed due to captcha error');
         }
+        signin(email, password)
+            .then(res => {
+                console.log("login succesfully")
+            })
+            .catch(error => {
+                console.log(error)
+            })
     };
 
     const handleValidateCaptcha = (e) => {

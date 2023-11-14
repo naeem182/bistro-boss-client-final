@@ -2,11 +2,19 @@ import React from 'react'
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Signup = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createuser } = useAuth()
     const onSubmit = (data) => {
-        console.log(data)
+        console.log(data);
+        createuser(data.email, data.password)
+            .then(result => {
+                const loggeduser = result.user;
+                console.log(loggeduser)
+            })
+
     }
 
 
@@ -55,6 +63,8 @@ const Signup = () => {
                                     maxLength: 20,
                                     pattern: /(?=.*[A-Z])(?=.*[!%@#$&*])(?=.*[0-9])(?=.*[a-z])/
                                 })} placeholder="password" className="input input-bordered" />
+
+
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
