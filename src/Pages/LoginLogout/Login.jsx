@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
     loadCaptchaEnginge,
     LoadCanvasTemplate,
@@ -7,10 +7,13 @@ import {
     validateCaptcha,
 } from 'react-simple-captcha';
 import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { signin } = useAuth()
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -32,9 +35,21 @@ const Login = () => {
         signin(email, password)
             .then(res => {
                 console.log("login succesfully")
+                navigate(location?.state ? location.state : '/');
+                Swal.fire({
+                    warning: "success",
+                    title: 'Login Successful.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
             })
             .catch(error => {
-                console.log(error)
+                console.log(error);
+                setError(error.message)
             })
     };
 

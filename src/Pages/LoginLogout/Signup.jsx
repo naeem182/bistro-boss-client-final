@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -13,6 +14,16 @@ const Signup = () => {
             .then(result => {
                 const loggeduser = result.user;
                 console.log(loggeduser)
+                Swal.fire({
+                    warning: "success",
+                    title: 'signup Successful.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
             })
 
     }
