@@ -1,13 +1,29 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
+import Swal from 'sweetalert2'
 
 const Navbar = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const { user, logout } = useAuth()
     const handlelogout = () => {
         logout()
-            .then(res => { })
+            .then(res => {
+
+                Swal.fire({
+                    warning: "success",
+                    title: 'Logout Successful.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                navigate(location.state ? location.state : "/")
+            })
             .catch(error => console.log(error))
     }
 

@@ -1,19 +1,22 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 
 const Signup = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createuser } = useAuth()
+    const { createuser } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
     const onSubmit = (data) => {
         console.log(data);
         createuser(data.email, data.password)
             .then(result => {
                 const loggeduser = result.user;
                 console.log(loggeduser)
+                navigate(location.state ? location.state : "/")
                 Swal.fire({
                     warning: "success",
                     title: 'signup Successful.',
