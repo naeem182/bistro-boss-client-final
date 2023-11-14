@@ -99,6 +99,7 @@ const Login = () => {
                             <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
+                    <p><small>New in our account? <Link to="/signup">Sign Up</Link></small></p>
                 </div>
             </div>
         </div>

@@ -37,6 +37,16 @@ const Navbar = () => {
                 Order
             </NavLink>
         </li>
+        <li className=' font-semibold'>
+            <NavLink
+                to={'/signup'}
+                className={({ isActive, isPending }) =>
+                    isPending ? 'pending' : isActive ? 'underline' : ''
+                }
+            >
+                SignUp
+            </NavLink>
+        </li>
 
     </>
     return (
