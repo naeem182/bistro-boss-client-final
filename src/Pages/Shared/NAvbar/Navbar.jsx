@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
+import { FaShoppingCart } from "react-icons/fa";
 import Swal from 'sweetalert2'
 
 const Navbar = () => {
@@ -99,7 +100,15 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
 
+
                 {user ? <>
+                    <button className="btn">
+                        <FaShoppingCart className='m-2' />
+                        <div className="badge badge-secondary">+0</div>
+                    </button>
+
+
+
                     <button onClick={handlelogout} className='btn btn-ghost hover:bg-red-500'
                     >Logout</button>
 
@@ -118,12 +127,10 @@ const Navbar = () => {
                             </NavLink>
                         </button>
                     </>
-
                 }
 
-
-
             </div>
+
         </div>
     )
 }
