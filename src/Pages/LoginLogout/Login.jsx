@@ -14,6 +14,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -35,7 +36,8 @@ const Login = () => {
         signin(email, password)
             .then(res => {
                 console.log("login succesfully")
-                navigate(location?.state ? location.state : '/');
+                // navigate(location?.state ? location.state : '/');
+                navigate(from, { replace: true });
                 Swal.fire({
                     warning: "success",
                     title: 'Login Successful.',
