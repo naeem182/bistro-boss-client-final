@@ -5,17 +5,21 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useCart from '../../../hooks/useCart';
 
 const FoodCard = ({ item }) => {
     const { name, image, price, recipe, _id } = item;
     const { user } = useAuth();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure()
+    const [, refetch] = useCart()
 
     const location = useLocation();
-    const handAddToCart = (food) => {
+    // const handAddToCart = (food) => {
+    // for refetch
+    const handAddToCart = () => {
 
-        console.log(food)
+        // console.log(food)
         if (user && user.email) {
             // 
             const cartItem = {
@@ -36,7 +40,9 @@ const FoodCard = ({ item }) => {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        refetch();
                     }
+
 
                 })
 
@@ -71,7 +77,11 @@ const FoodCard = ({ item }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>{recipe}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={() => handAddToCart(item)} className="btn btn-outline bg-slate-100 border-0 border-b-4 border-orange-400 mt-4">Add to Cart</button>
+                    <button
+                        // onClick={() => handAddToCart(item)}
+                        // for refetch
+                        onClick={handAddToCart}
+                        className="btn btn-outline bg-slate-100 border-0 border-b-4 border-orange-400 mt-4">Add to Cart</button>
                 </div>
             </div>
         </div>
