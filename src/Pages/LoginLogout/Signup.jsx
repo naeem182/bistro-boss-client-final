@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 const Signup = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createuser } = useAuth();
+    const { createuser, updateUserProfile } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const onSubmit = (data) => {
@@ -16,6 +16,7 @@ const Signup = () => {
             .then(result => {
                 const loggeduser = result.user;
                 console.log(loggeduser)
+                updateUserProfile(data.name, data.photoURL)
                 navigate(location.state ? location.state : "/")
                 Swal.fire({
                     warning: "success",
