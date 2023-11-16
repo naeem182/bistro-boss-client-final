@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import { FaShoppingCart } from "react-icons/fa";
 import Swal from 'sweetalert2'
@@ -104,10 +104,13 @@ const Navbar = () => {
 
 
                 {user ? <>
-                    <button className="btn">
-                        <FaShoppingCart className='m-2' />
-                        <div className="badge badge-secondary">+{cart.length}</div>
-                    </button>
+                    <Link to={'/dashboard/cart'}>
+                        <button
+                            className="btn">
+                            <FaShoppingCart className='m-2' />
+                            <div className="badge badge-secondary">+{cart.length}</div>
+                        </button>
+                    </Link>
 
 
 
