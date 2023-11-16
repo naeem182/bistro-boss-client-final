@@ -3,10 +3,12 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import { FaShoppingCart } from "react-icons/fa";
 import Swal from 'sweetalert2'
+import useCart from '../../../hooks/useCart';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [cart] = useCart();
 
     const { user, logout } = useAuth()
     const handlelogout = () => {
@@ -104,7 +106,7 @@ const Navbar = () => {
                 {user ? <>
                     <button className="btn">
                         <FaShoppingCart className='m-2' />
-                        <div className="badge badge-secondary">+0</div>
+                        <div className="badge badge-secondary">+{cart.length}</div>
                     </button>
 
 

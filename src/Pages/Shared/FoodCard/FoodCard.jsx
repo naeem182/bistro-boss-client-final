@@ -10,7 +10,7 @@ const FoodCard = ({ item }) => {
     const { name, image, price, recipe, _id } = item;
     const { user } = useAuth();
     const navigate = useNavigate();
-    const axios = useAxiosSecure()
+    const axiosSecure = useAxiosSecure()
 
     const location = useLocation();
     const handAddToCart = (food) => {
@@ -25,7 +25,7 @@ const FoodCard = ({ item }) => {
                 image,
                 price
             }
-            axios.post('http://localhost:5000/carts', cartItem)
+            axiosSecure.post('/carts', cartItem)
                 .then(res => {
                     console.log(res.data)
                     if (res.data.insertedId) {
