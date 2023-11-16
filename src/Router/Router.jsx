@@ -54,7 +54,7 @@ const mycreatedrouter = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRouter><DashboardLayout></DashboardLayout></PrivateRouter>,
         children: [
             {
                 path: 'cart',

@@ -8,6 +8,7 @@ import {
 } from 'react-simple-captcha';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import SocialLogin from './SocialLogin/SocialLogin';
 
 const Login = () => {
     const { signin } = useAuth()
@@ -126,6 +127,7 @@ const Login = () => {
                             <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
+                    <SocialLogin></SocialLogin>
                     <p><small>New in our account? <Link to="/signup">Sign Up</Link></small></p>
                 </div>
             </div>
