@@ -9,13 +9,13 @@ import SocialLogin from './SocialLogin/SocialLogin';
 
 const Signup = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createuser, updateUserProfile } = useAuth();
+    const { createUser, updateUserProfile } = useAuth();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     // const location = useLocation();
     const onSubmit = (data) => {
         console.log(data);
-        createuser(data.email, data.password)
+        createUser(data.email, data.password)
             // updateUserProfile(data.name, data.photoURL)
             .then(result => {
                 const loggedUser = result.user;
