@@ -4,12 +4,13 @@ import useAuth from '../../../hooks/useAuth'
 import { FaShoppingCart } from "react-icons/fa";
 import Swal from 'sweetalert2'
 import useCart from '../../../hooks/useCart';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [cart] = useCart();
-
+    const [isAdmin] = useAdmin();
     const { user, logout } = useAuth()
     const handlelogout = () => {
         logout()
@@ -32,7 +33,6 @@ const Navbar = () => {
 
 
     const Navlinks = <>
-
 
 
         <li className=' font-semibold'>
@@ -76,6 +76,17 @@ const Navbar = () => {
                 SignUp
             </NavLink>
         </li>
+        {
+            // user ? 'true': 'false'
+            // user ? condition ? 'double true' : 'one true' : 'false' 
+        }
+        {
+            user && isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+        }
+        {
+            user && !isAdmin && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
+        }
+
 
     </>
     return (
